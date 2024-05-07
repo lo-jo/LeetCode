@@ -18,10 +18,69 @@
 // Output: "world hello"
 // Explanation: Your reversed string should not contain leading or trailing spaces.
 
+#include <iostream>
+#include <string>
+using std::string;
 
 class Solution {
 public:
+    int findClosestSpace(int start, string s){
+        while(start >= 0){
+            if (isspace(s[start])){
+                return start;
+            }
+            start--;
+        }
+        return start;
+    }
+
+    string trimString(string s, int start, int end){
+        string str;
+        while(start <= end){
+            while(isspace(s[start]))
+                start++;
+            std::cout << "str trim " << s[start] << std::endl;
+            str += s[start];
+            start++;
+        }
+        std::cout << "FINAL STR [" << str << str.size() << "]" << std::endl;
+        if (str.size() > 0){
+            std::cout << "WHY IS THERE A SPACE" << std::endl;
+            return str + " ";
+        }
+
+        return str;
+    }
+
+
     string reverseWords(string s) {
-        
+        int i = s.length()-1;
+        string str;
+
+        while (i >= 0){
+            while (isspace(s[i])){
+                i--;
+                if (i <= 0){
+                    break;
+                }
+            }
+                
+            std::cout << i << std::endl;
+            int start = findClosestSpace(i, s);
+            string token = trimString(s, start +1, i);
+            // std::cout << "token : " << token << std::endl;
+            str += token;
+            i = start;
+            if (start == 0)
+                break;
+        }
+        string estr = str.substr(0, str.length() -1);
+        std::cout << "HERE IS THE FINAL RESULT [" << estr << "]" << std::endl;
+        return estr;
     }
 };
+
+int main(){
+    Solution string;
+    string.reverseWords("4");
+}
