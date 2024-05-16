@@ -22,32 +22,26 @@ using std::vector;
 
 class Solution {
 public:
-    int fillProduct(vector<int> &nums, std::vector<int>::iterator it){
-        int sum = 1;
-        int i = 0;
-        int flag = 0;
-        std::cout << "CURRENT PRODUCT CALC" << *it << std::endl;
-        while(i < nums.size()){
-            if (nums[i] == *it){
-                std::cout << "do nothing" << nums[i] << std::endl;
-            }
-            else {
-                if (!flag){
-                    std::cout << "find what to multiply ur number to" << std::endl;
-                }
-                std::cout<< nums[i]<< std::endl;
-            }
-            i++;
-        }
-        return sum;
-    }
+
     vector<int> productExceptSelf(vector<int>& nums) {
-        std::vector<int> res;
-        for(std::vector<int>::iterator it = nums.begin(); it < nums.end(); it++){
-            fillProduct(nums, it);
-            
-            
+        std::vector<int> res(nums.size(), 1);
+        int left = 1;
+        int right = 1;
+
+        for(int i = 0; i< nums.size(); i++){
+            std::cout << nums[i] << std::endl;
+            std::cout << "res " << res[i] << std::endl;
+            res[i] *= left;
+            left *= nums[i];
         }
+        for (int i = nums.size() -1; i >= 0; i--){
+            std::cout << nums[i] << std::endl;
+            res[i] *= right;
+            std::cout << "res " << res[i] << std::endl;
+            right *= nums[i];
+        }
+
+
 
         return res;
     }
