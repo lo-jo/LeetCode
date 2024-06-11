@@ -75,12 +75,12 @@ public:
                 break;
         }
         string estr = str.substr(0, str.length() -1);
-        std::cout << "HERE IS THE FINAL RESULT [" << estr << "]" << std::endl;
+        // std::cout << "HERE IS THE FINAL RESULT [" << estr << "]" << std::endl;
         return estr;
     }
 };
 
 int main(){
     Solution string;
-    string.reverseWords("4");
+    string.reverseWords("   hi   from here  ");
 }

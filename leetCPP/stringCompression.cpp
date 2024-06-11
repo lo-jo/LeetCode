@@ -33,11 +33,56 @@ public:
     int compress(vector<char>& chars) {
         // count how nany occurences
         int beginner = chars.size();
+        int i = 0;
+        char current;
+        int count = 0;
+        std::vector<char> chariot;
         if (beginner == 1){
             chars.push_back('1');
             std::cout << "one tiny array " << chars[0] << chars[1] << chars.size() << std::endl;
             return 1;
         }
+        else {
+            while (i < beginner){
+                // std::cout << chars[i];
+                current = chars[i];
+                // count = 1;
+                // chars.push_back(chars[i]);
+                while (chars[i] == current){
+                    // std::cout<< chars[i];
+                    count++;
+                    i++;
+                }
+                // std::cout << count << std::endl;
+                if (count == 1){
+                    chars.push_back(current);
+                    
+
+                }
+                else {
+                    chars.push_back(current);
+                    if (count < 10)
+                        chars.push_back('0' + count);
+                    else{
+                        
+                        }
+                    }
+
+                }
+                count = 0;
+                // chars.push_back(count);
+                // i++;
+            }
+
+        }
+        // i = 0;
+        // while(i <= beginner){
+        //     chars.erase(chars.begin());
+        //     i++;
+        // }
+        chars.erase(chars.begin(), (chars.begin() + beginner));
+        
+        return chars.size();
     }
 
 
@@ -45,9 +90,15 @@ public:
 
 int main(){
     Solution compressed;
-    std::vector<char> chariot {'a', 'a', 'b', 'b'};
-    std::vector<char> single {'a'};
-    compressed.compress(chariot);
-    compressed.compress(single);
+    std::vector<char> chariot {'a', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b'};
+    // std::vector<char> single {'a'};
+    std::cout << compressed.compress(chariot) << std::endl;
+    int i = 0;
+    std::cout << "FINAL"<< std::endl;
+    while(chariot[i]){
+        std::cout << chariot[i] << ".";
+        i++;
+    }
+    // compressed.compress(single);
 
 }
